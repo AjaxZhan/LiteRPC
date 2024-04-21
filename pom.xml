@@ -13,6 +13,9 @@
     <description>轻量级RPC框架</description>
     <modules>
         <module>LiteRPC-core</module>
+        <module>LiteRPC-interface</module>
+        <module>LiteRPC-provider</module>
+        <module>LiteRPC-consumer</module>
     </modules>
 
     <properties>
@@ -63,6 +66,13 @@
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling-serial</artifactId>
             <version>${jboss-marshalling-serial.version}</version>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
