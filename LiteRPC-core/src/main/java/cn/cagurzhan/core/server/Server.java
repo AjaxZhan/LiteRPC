@@ -1,5 +1,7 @@
 package cn.cagurzhan.core.server;
 
+import cn.cagurzhan.core.common.RpcDecoder;
+import cn.cagurzhan.core.common.RpcEncoder;
 import cn.cagurzhan.core.common.cache.CommonServerCache;
 import cn.cagurzhan.core.common.config.ServerConfig;
 import io.netty.bootstrap.ServerBootstrap;
@@ -43,8 +45,11 @@ public class Server {
                     protected void initChannel(SocketChannel ch) throws Exception {
                         System.out.println("初始化provider过程");
                         // 添加编码器
+                        ch.pipeline().addLast(new RpcEncoder());
                         // 添加解码器
+                        ch.pipeline().addLast(new RpcDecoder());
                         // 添加服务handler
+                        ch.pipeline().addLast(new ServerHandler());
                     }
                 })
                 .bind(serverConfig.getPort()).sync();
